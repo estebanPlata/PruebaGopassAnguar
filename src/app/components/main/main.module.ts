@@ -7,13 +7,14 @@ import { MainComponent } from './main.component'
 import { MaterialModule } from 'src/app/material.module';
 import { FilterPipe } from 'src/app/share/pipes/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { MyNewsComponent } from '../my-news/my-news.component';
 
 
 
 @NgModule({
   declarations: [
     MainComponent,
+    MyNewsComponent,
     FilterPipe
   ],
   imports: [

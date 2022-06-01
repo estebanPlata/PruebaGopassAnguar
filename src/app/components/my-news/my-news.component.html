@@ -1,1 +1,45 @@
-<p>my-news works!</p>
+<main class="main bg-light">
+  <div class="container row align-items-center py-2 mx-auto ">
+    <div class="col-md-6 d-flex align-items-center pl-5 col-12">
+      <span class="iconify fs-1 " data-icon="bi:list-check"> </span>
+      <p class="mt-3 ml-7 fs-1 ">Noticias</p>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <div class="input-group rounded w-80 m-auto">
+        <input
+          type="search"
+          class="form-control rounded rounded2 fs-3"
+          placeholder="Buscar noticia"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          [(ngModel)]="userAuthor"
+          id="filter"
+        />
+        <span class="input-group-text border-0" id="search-addon">
+          <span class="iconify" data-icon="codicon:search"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row card-flex">
+    <mat-card
+      class="col-12 card mt-2"
+      *ngFor="let item of dataMyNews | filter:userAuthor "
+    ><!-- pipes tipo filtro, paginación tamaño 5 por página hasta tamaño del arreglo -->
+      <mat-card-content class="d-lg-flex justify-content-center">
+        <div class="d-flex justify-content-center align-items-center p-1 ">
+          <img  src="{{item.img}}"alt="{{item.author}}"class="img"/><!-- imagen de la api -->
+        </div>
+        <div class="size-new">
+          <h2 class="fs-1">{{item.title}}</h2><!-- titulo de la noticia -->
+          <p class="fs-4">
+            {{item.description}}<!-- descripcion de la noticia -->
+          </p>
+          <button class="fs-1 text-danger border border-0 bg-white" (click)="deleteState(item)">
+            <span class="iconify" data-icon="ant-design:delete-filled"></span>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</main>
